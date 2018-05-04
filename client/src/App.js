@@ -8,6 +8,9 @@ import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import CreateProfile from "./components/CreateProfile";
+import EditProfile from "./components/EditProfile";
+import AddExperience from "./components/AddExperience";
+import AddEducation from "./components/AddEducation";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -62,6 +65,27 @@ class App extends Component {
                   exact
                   path="/create-profile"
                   component={CreateProfile}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/edit-profile"
+                  component={EditProfile}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/add-experience"
+                  component={AddExperience}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/add-education"
+                  component={AddEducation}
                 />
               </Switch>
             </div>
