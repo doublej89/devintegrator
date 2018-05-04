@@ -4,15 +4,19 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Landing from "./components/Landing";
 import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
+import PrivateRoute from "./components/PrivateRoute";
+import CreateProfile from "./components/CreateProfile";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import thunk from "redux-thunk";
 import jwtdecode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser } from "./actions/authActions";
 import rootReducer from "./reducers";
+import { CLEAR_CURRENT_PROFILE } from "./actions/types";
 
 const store = createStore(
   rootReducer,
@@ -34,6 +38,7 @@ if (localStorage.jwtToken) {
     localStorage.removeItem("jwtToken");
     setAuthToken(false);
     store.dispatch(setCurrentUser({}));
+    store.dispatch({ type: CLEAR_CURRENT_PROFILE });
     window.location.href = "/login";
   }
 }
@@ -49,6 +54,16 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/create-profile"
+                  component={CreateProfile}
+                />
+              </Switch>
             </div>
             <Footer />
           </div>
