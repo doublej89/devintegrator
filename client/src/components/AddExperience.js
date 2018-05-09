@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import { addExperience } from "../actions/profileActions";
+import classnames from "classnames";
 
 class AddExperience extends Component {
   constructor(props) {

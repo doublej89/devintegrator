@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createProfile } from "../actions/profileActions";
 import { withRouter } from "react-router-dom";
+import classnames from "classnames";
 
 class CreateProfile extends Component {
   constructor(props) {

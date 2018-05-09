@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { createProfile, getCurrentProfile } from "../actions/profileActions";
 import { Link, withRouter } from "react-router-dom";
 import isEmpty from "../utils/is-empty";
+import classnames from "classnames";
 
 class EditProfile extends Component {
   constructor(props) {
