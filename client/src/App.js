@@ -15,6 +15,7 @@ import Profiles from "./components/Profiles";
 import Profile from "./components/Profile";
 import NotFound from "./components/NotFound";
 import Posts from "./components/Posts";
+import Post from "./components/Post";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -96,6 +97,9 @@ class App extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/feed" component={Posts} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/post/:id" component={Post} />
               </Switch>
               <Route exact path="/not-found" component={NotFound} />
             </div>
