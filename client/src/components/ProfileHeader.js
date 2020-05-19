@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import isEmpty from "../utils/is-empty";
+import Spinner from "./Spinner";
 
 class ProfileHeader extends Component {
   render() {
@@ -12,13 +13,19 @@ class ProfileHeader extends Component {
               <div className="col-4 col-md-3 m-auto">
                 <img
                   className="rounded-circle"
-                  src={profile.user.avatar}
+                  src={
+                    profile && profile.user
+                      ? profile.user.avatar
+                      : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                  }
                   alt=""
                 />
               </div>
             </div>
             <div className="text-center">
-              <h1 className="display-4 text-center">{profile.user.name}</h1>
+              <h1 className="display-4 text-center">
+                {profile && profile.user ? profile.user.name : "Nameless"}
+              </h1>
               <p className="lead text-center">
                 {profile.status}{" "}
                 {isEmpty(profile.company) ? null : (

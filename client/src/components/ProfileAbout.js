@@ -4,12 +4,17 @@ import isEmpty from "../utils/is-empty";
 class ProfileAbout extends Component {
   render() {
     const { profile } = this.props;
-    const firstName = profile.user.name.trim().split(" ")[0];
-    const skills = profile.skills.map((skill, index) => (
-      <div key={index} className="p-3">
-        <i className="fa fa-check">{skill}</i>
-      </div>
-    ));
+    const firstName =
+      profile.user && profile.user.name
+        ? profile.user.name.trim().split(" ")[0]
+        : "Nameless";
+    const skills = profile.skills
+      ? profile.skills.map((skill, index) => (
+          <div key={index} className="p-3">
+            <i className="fa fa-check">{skill}</i>
+          </div>
+        ))
+      : "No skills to show";
     return (
       <div className="row">
         <div className="col-md-12">

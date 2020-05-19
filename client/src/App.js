@@ -26,14 +26,7 @@ import { setCurrentUser } from "./actions/authActions";
 import rootReducer from "./reducers";
 import { CLEAR_CURRENT_PROFILE } from "./actions/types";
 
-const store = createStore(
-  rootReducer,
-  {},
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);

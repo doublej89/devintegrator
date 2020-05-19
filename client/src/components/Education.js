@@ -10,28 +10,30 @@ class Education extends Component {
   }
 
   render() {
-    const education = this.props.education.map(edu => (
-      <tr key={edu._id}>
-        <td>{edu.school}</td>
-        <td>{edu.degree}</td>
-        <td>
-          <Moment format="YYY/MM/DD">{edu.from}</Moment> -{" "}
-          {edu.to === null ? (
-            "Now"
-          ) : (
-            <Moment format="YYY/MM/DD">{edu.to}</Moment>
-          )}
-        </td>
-        <td>
-          <button
-            onClick={this.deleteClick.bind(this, edu._id)}
-            className="btn btn-danger"
-          >
-            Delete
-          </button>
-        </td>
-      </tr>
-    ));
+    const education = this.props.education
+      ? this.props.education.map((edu) => (
+          <tr key={edu._id}>
+            <td>{edu.school}</td>
+            <td>{edu.degree}</td>
+            <td>
+              <Moment format="YYY/MM/DD">{edu.from}</Moment> -{" "}
+              {edu.to === null ? (
+                "Now"
+              ) : (
+                <Moment format="YYY/MM/DD">{edu.to}</Moment>
+              )}
+            </td>
+            <td>
+              <button
+                onClick={this.deleteClick.bind(this, edu._id)}
+                className="btn btn-danger"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        ))
+      : [];
     return (
       <div>
         <h1 className="mb-4">Education Credentials</h1>
